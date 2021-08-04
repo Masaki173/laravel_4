@@ -9,12 +9,13 @@
 <td>
 {{$item->user->name}}
 @if ($item->user_id === Auth::user()->id)
-<form action="posts/{{$item->id}}/edit" method="post">
+<form action="posts/{{$item->id}}/edit" method="get">
  @csrf
   <input type="hidden" name="id">
   <button>編集する</button>
 </form>
 <form action="posts/del/{{$item->id}}" method="post">
+ @method('delete')
  @csrf
   <input type="hidden" name="id">
   <button>削除する</button>

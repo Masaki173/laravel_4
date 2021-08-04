@@ -24,5 +24,5 @@ Route::get('posts', 'App\Http\Controllers\PostsController@index');
 Route::get('posts/create', 'App\Http\Controllers\PostsController@create');
 Route::post('posts/store', 'App\Http\Controllers\PostsController@store');
 Route::get('posts/{id}/edit', 'App\Http\Controllers\PostsController@edit');
-Route::put('posts/update/{id}', 'App\Http\Controllers\PostsController@update');
-Route::delete('posts/del/{id}', 'App\Http\Controllers\PostsController@delete');
+Route::put('posts/{id}/update', 'App\Http\Controllers\PostsController@update');
+Route::delete('posts/del/{id}', 'App\Http\Controllers\PostsController@destroy');

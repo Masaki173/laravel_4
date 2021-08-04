@@ -6,6 +6,7 @@ use App\Models\Post;
 // use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\PostRequest;
 
 class PostsController extends Controller
 {       public function index(Request $request)
@@ -17,7 +18,7 @@ class PostsController extends Controller
         {
             return view('posts.post');
         }
-        public function store(Request $request)
+        public function store(PostRequest $request)
         {
             $post = new Post;
             $form = $request->all();
@@ -32,14 +33,14 @@ class PostsController extends Controller
             $post = Post::find($id);
             return view('posts.edit', compact('post'));
         }
-        public function update(Request $request, $id){
+        public function update(PostRequest $request, $id){
             $post = Post::find($id);
             $form = $request->all();
             unset($form['_token']);
-            $todo->fill($form)->save();
+            $post->fill($form)->save();
             return redirect('/posts');
         }
-        public function delete($id){
+        public function destroy($id){
             $item = Post::find($id);
             $item->delete();
             return redirect('/posts');

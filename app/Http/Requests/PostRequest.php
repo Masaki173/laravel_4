@@ -13,12 +13,7 @@ class PostRequest extends FormRequest
      */
     public function authorize()
     {
-        if ($this->path() == "posts/create")
-        {
             return true;
-        }else{
-            return false;
-        }
     }
 
     /**
@@ -29,7 +24,8 @@ class PostRequest extends FormRequest
     public function rules()
     {
         return [
-            'password' => ''
+            'title' => 'max:140',
+            'content' => 'max:140',
         ];
     }
 }
