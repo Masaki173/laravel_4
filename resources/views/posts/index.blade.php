@@ -22,6 +22,20 @@
 </form>
 @endif
 </td>
+<tr>
+<td>
+@if($item->is_liked_by_auth_user())
+<a href="{{ route('unlike_post', $item->id) }}" class="fas fa-heart">
+  @csrf
+  <span class="badge">{{$item->likes->count()}}</span>
+</a>
+@else
+<a href="{{ route('like_post', $item->id) }}" class="far fa-heart">
+    @csrf
+ <span class="badge">{{$item->likes->count()}}</span>
+</a>
+@endif
+</td>
 </tr>
 @endforeach
 </table>
