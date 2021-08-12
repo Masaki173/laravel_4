@@ -26,6 +26,6 @@ Route::post('posts/store', 'App\Http\Controllers\PostsController@store');
 Route::get('posts/{id}/edit', 'App\Http\Controllers\PostsController@edit');
 Route::put('posts/{id}/update', 'App\Http\Controllers\PostsController@update');
 Route::delete('posts/del/{id}', 'App\Http\Controllers\PostsController@destroy');
-Route::get('/posts/like/{id}','App\Http\Controllers\PostsController@switchLike')->name('like_post');
-Route::get('/posts/unlike/{id}','App\Http\Controllers\PostsController@switchUnlike')->name('unlike_post');
+Route::post('/posts/like/{id}','App\Http\Controllers\PostsController@switchLike')->name('like_post');
+Route::post('/posts/unlike/{id}','App\Http\Controllers\PostsController@switchUnlike')->name('unlike_post');
 // Route::get('logout', array('uses' => 'LoginController@logout'));
