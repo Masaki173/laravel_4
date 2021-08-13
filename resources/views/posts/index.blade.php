@@ -1,7 +1,7 @@
 @extends('layouts.posts')
 @section('title', 'index')
+@section('post_content')
 <table>
-  @section('post_content')
   @foreach ($items as $item)
 <tr><th>{{$item->title}}</th></tr>
 <tr><td>{{$item->content}}</td></td>
@@ -19,6 +19,22 @@
  @csrf
   <input type="hidden" name="id">
   <button>削除する</button>
+</form>
+@endif
+</td>
+<tr>
+<td>
+@if($item->is_liked_by_auth_user())
+<form action="{{ route('unlike_post', $item->id) }}" method="post">
+  @csrf
+  <input type="submit" value="&#xf004;" class="fas fa-heart">
+  <span class="badge">{{$item->likes->count()}}</span>
+</form>
+@else
+<form action="{{ route('like_post', $item->id) }}" method="post">
+  @csrf
+  <input type="submit" value="&#xf004;" class="far fa-heart">
+  <span class="badge">{{$item->likes->count()}}</span>
 </form>
 @endif
 </td>

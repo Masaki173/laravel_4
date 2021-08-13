@@ -52,7 +52,7 @@
                                 </li>
                             @endif
                         @else
-                            <li class="nav-item">
+                            <li>
                              <a class="nav-link" href="/posts">みんなの投稿</a>
                             </li>
                             <li>

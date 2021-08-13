@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
-// use App\Models\User;
+use App\Models\Like;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\PostRequest;
@@ -44,5 +44,19 @@ class PostsController extends Controller
             $item = Post::find($id);
             $item->delete();
             return redirect('/posts');
+        }
+        public function switchLike($id){
+              Like::create(
+                array(
+                  'user_id' => Auth::id(),
+                  'post_id' => $id
+                )
+              );
+              return redirect()->back();
+        }
+        public function switchUnlike($id){
+          $like = Like::where('post_id', $id)->where('user_id', Auth::id())->first();
+          $like->delete();
+             return redirect()->back();
         }
     }
